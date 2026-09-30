@@ -33,3 +33,34 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .link { border: none; background: none; color: var(--brand); cursor: pointer; padding: 0; }
 .page-foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--muted); }
 .error-text { color: #b42318; }
+.ok-text { color: #067647; }
+.muted-text { color: var(--muted); }
+.stat-danger { color: #b42318; }
+.stat-warn { color: #b54708; }
+
+/* 压力容器合规视图 */
+.range-panel { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
+.range-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.range-current { margin-left: 10px; color: var(--muted); font-size: 13px; }
+.range-form { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; margin-top: 10px; }
+.range-tip { flex-basis: 100%; color: var(--muted); font-size: 12px; margin: 0; }
+.range-versions { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.range-versions li { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 4px; }
+.range-versions li strong { color: #1f2937; }
+.group-title { font-size: 14px; margin: 16px 0 6px; display: flex; align-items: center; gap: 8px; }
+.group-pending { color: #b54708; }
+.group-count { font-size: 12px; color: var(--muted); font-weight: normal; }
+.group-table { margin-bottom: 4px; }
+.block-empty { background: #fff; padding: 16px; border: 1px solid var(--border); }
+.detail-table th { width: 140px; background: #f8fafc; }
+.range-cell { font-size: 12px; color: var(--muted); }
+.tag { display: inline-block; border-radius: 10px; padding: 1px 10px; font-size: 12px; line-height: 18px; white-space: nowrap; }
+.tag-ok { background: #ecfdf3; color: #067647; border: 1px solid #abefc6; }
+.tag-over { background: #fef3f2; color: #b42318; border: 1px solid #fda29b; font-weight: 600; }
+.tag-pending { background: #fffaeb; color: #b54708; border: 1px solid #fedf89; }
+.row-over { background: #fef3f2; }
+.row-over:hover { background: #fee4e2; }
+.compliance-cell { display: flex; flex-direction: column; gap: 2px; }
+.compliance-reason { font-size: 12px; color: #b42318; }
+.row-pending-cell .compliance-reason { color: #b54708; }
+.compliance-meta { font-size: 11px; color: var(--muted); }

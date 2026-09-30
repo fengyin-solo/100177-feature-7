@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '@/views/Dashboard.vue'
 const Boiler = () => import('@/views/boiler/index.vue')
 const Vessel = () => import('@/views/vessel/index.vue')
+const VesselDetail = () => import('@/views/vessel/detail.vue')
 const Pressurepipe = () => import('@/views/pressurepipe/index.vue')
 const Crane = () => import('@/views/crane/index.vue')
 const Elevator = () => import('@/views/elevator/index.vue')
@@ -26,6 +27,7 @@ const router = createRouter({
     { path: '/', name: 'dashboard', component: Dashboard },
     { path: '/boiler', name: 'boiler', component: Boiler },
     { path: '/vessel', name: 'vessel', component: Vessel },
+    { path: '/vessel/:id', name: 'vessel-detail', component: VesselDetail },
     { path: '/pressurepipe', name: 'pressurepipe', component: Pressurepipe },
     { path: '/crane', name: 'crane', component: Crane },
     { path: '/elevator', name: 'elevator', component: Elevator },

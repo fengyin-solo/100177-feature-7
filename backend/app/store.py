@@ -14,9 +14,14 @@ class Store:
         self._tables: dict[str, list[dict[str, Any]]] = {
             name: [dict(row) for row in rows] for name, rows in SEED_ROWS.items()
         }
+        # 压力容器合规判定专用台账：范围版本、判定记录（只追加）、调整令牌各一张表。
+        self._tables["vessel_ranges"] = []
+        self._tables["vessel_judgments"] = []
+        self._tables["vessel_range_tokens"] = []
 
     def module_names(self) -> list[str]:
-        return sorted(self._tables)
+        # 合规判定用的内部台账（vessel_ranges 等）不参与业务模块概览。
+        return sorted(name for name in self._tables if name == "vessel" or not name.startswith("vessel_"))
 
     def rows(self, module: str) -> list[dict[str, Any]]:
         return self._tables.setdefault(module, [])
