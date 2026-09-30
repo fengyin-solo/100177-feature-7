@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.routers import ROUTERS
+from app.services.compliance import compliance_service
 from app.store import store
 
 app = FastAPI(title="特种设备点检运维平台", version="1.0.0")
@@ -34,5 +35,15 @@ def health() -> dict[str, object]:
 
 @app.get("/api/overview")
 def overview() -> dict[str, object]:
-    """运营概览：把各业务模块的待处理量汇总成看板卡片。"""
-    return store.overview()
+    """运营概览：把各业务模块的待处理量汇总成看板卡片。
+
+    压力容器的超范围台数直接取合规视图的汇总口径，保证看板与视图条数一致。
+    """
+    data = store.overview()
+    compliance = compliance_service.summary()
+    data["vessel_compliance"] = compliance
+    for module in data["modules"]:
+        if module["name"] == "vessel":
+            module["out_of_range"] = compliance["out_of_range"]
+    data["cards"].append({"label": "压力容器超范围台数", "value": compliance["out_of_range"]})
+    return data
